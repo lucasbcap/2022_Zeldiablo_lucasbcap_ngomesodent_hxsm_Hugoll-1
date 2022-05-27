@@ -17,6 +17,7 @@ public class Labyrinthe {
     public static final char MUR = 'X';
     public static final char PJ = 'P';
     public static final char VIDE = '.';
+    public static final char MONSTRE = 'M';
 
     /**
      * constantes actions possibles
@@ -30,6 +31,11 @@ public class Labyrinthe {
      * attribut du personnage
      */
     public Perso pj;
+
+    /**
+     * attribut du Monstre
+     */
+    public Perso m;
 
     /**
      * les murs du labyrinthe
@@ -90,6 +96,7 @@ public class Labyrinthe {
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
         this.pj = null;
+        this.m = null;
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -116,6 +123,11 @@ public class Labyrinthe {
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
                         break;
+                    case MONSTRE:
+                        // pas de mur
+                        this.murs[colonne][numeroLigne] = false;
+                        this.m = new Perso(colonne, numeroLigne);
+                        break;
 
                     default:
                         throw new Error("caractere inconnu " + c);
@@ -126,7 +138,9 @@ public class Labyrinthe {
             ligne = bfRead.readLine();
             numeroLigne++;
         }
-
+        if((this.m.getX()==this.pj.getX() && this.m.getY()==this.pj.getY())){
+            throw new Error("Monstre et Personnage confondus");
+        }
         // ferme fichier
         bfRead.close();
     }
@@ -142,14 +156,40 @@ public class Labyrinthe {
         // case courante
         int[] courante = {this.pj.x, this.pj.y};
 
+        int[] Monstre = {this.m.x, this.m.y};
+
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
 
         // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]]) {
+        if (!this.murs[suivante[0]][suivante[1]] && !(Monstre[0]==suivante[0] && Monstre[1]==suivante[1])) {
             // on met a jour personnage
             this.pj.x = suivante[0];
             this.pj.y = suivante[1];
+        }
+    }
+
+
+    /**
+     * deplace le monstre aleatoirement.
+     * gere la collision avec les murs
+     *
+     * @param action une des actions possibles
+     */
+    public void deplacerMonstre(String action) {
+        // case courante
+        int[] courante = {this.pj.x, this.pj.y};
+
+        int[] Monstre = {this.m.x, this.m.y};
+
+        // calcule case suivante
+        int[] suivante = getSuivant(Monstre[0], Monstre[1], action);
+
+        // si c'est pas un mur, on effectue le deplacement
+        if (!this.murs[suivante[0]][suivante[1]] && !(courante[0]==suivante[0] && courante[1]==suivante[1])) {
+            // on met a jour personnage
+            this.m.x = suivante[0];
+            this.m.y = suivante[1];
         }
     }
 
