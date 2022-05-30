@@ -160,16 +160,24 @@ public class Labyrinthe {
 
         int[] Monstre = {this.m.x, this.m.y};
 
+        ArrayList<Bombe> Bombes = pj.getSacBombes();
+        boolean bouger = true;
 
         // calcule case suivante
         int[] suivante = getSuivant(courante[0], courante[1], action);
 
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]] && !(Monstre[0]==suivante[0] && Monstre[1]==suivante[1])) {
-            // on met a jour personnage
-            this.pj.x = suivante[0];
-            this.pj.y = suivante[1];
-
+            for(int i = 0 ; i<Bombes.size();i++){
+                if(Bombes.get(i).getX()==suivante[0] && Bombes.get(i).getY()==suivante[1]){
+                    bouger = false;
+                }
+            }
+            if(bouger) {
+                // on met a jour personnage
+                this.pj.x = suivante[0];
+                this.pj.y = suivante[1];
+            }
         }
     }
 
@@ -186,16 +194,24 @@ public class Labyrinthe {
 
         int[] Monstre = {this.m.x, this.m.y};
 
+        ArrayList<Bombe> Bombes = pj.getSacBombes();
+        boolean bouger = true;
 
         // calcule case suivante
         int[] suivante = getSuivant(Monstre[0], Monstre[1], action);
 
         // si c'est pas un mur, on effectue le deplacement
         if (!this.murs[suivante[0]][suivante[1]] && !(courante[0]==suivante[0] && courante[1]==suivante[1])) {
-            // on met a jour personnage
-            this.m.x = suivante[0];
-            this.m.y = suivante[1];
-
+            for(int i = 0 ; i<Bombes.size();i++){
+                if(Bombes.get(i).getX()==suivante[0] && Bombes.get(i).getY()==suivante[1]){
+                    bouger = false;
+                }
+            }
+            if(bouger) {
+                // on met a jour personnage
+                this.m.x = suivante[0];
+                this.m.y = suivante[1];
+            }
         }
     }
 

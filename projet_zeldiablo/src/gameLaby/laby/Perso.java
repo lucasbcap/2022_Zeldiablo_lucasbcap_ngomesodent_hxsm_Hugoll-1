@@ -12,6 +12,7 @@ public class Perso {
      * position du personnage
      */
     int x, y;
+    private ArrayList<Bombe> SacBombes;
 
     /**
      * constructeur
@@ -22,6 +23,7 @@ public class Perso {
     public Perso(int dx, int dy) {
         this.x = dx;
         this.y = dy;
+        this.SacBombes = new ArrayList<Bombe>();
     }
 
     /**
@@ -36,6 +38,12 @@ public class Perso {
         return (this.x == dx && this.y == dy);
     }
 
+    public void DepotBombe(int x , int y){
+        if(this.SacBombes.size()<3) {
+            Bombe b = new Bombe(x, y);
+            this.SacBombes.add(b);
+        }
+    }
 
     // ############################################
     // GETTER
@@ -57,4 +65,10 @@ public class Perso {
         return this.y;
     }
 
+    /**
+     * @return le sac de bombe du personnage
+     */
+    public ArrayList<Bombe> getSacBombes(){
+        return this.SacBombes;
+    }
 }
