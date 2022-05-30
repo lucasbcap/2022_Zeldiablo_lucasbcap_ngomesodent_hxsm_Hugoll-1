@@ -1,6 +1,8 @@
 package gameLaby.laby;
 
 
+import java.util.ArrayList;
+
 /**
  * gere un personnage situe en x,y
  */
@@ -10,6 +12,7 @@ public class Perso {
      * position du personnage
      */
     int x, y;
+    private ArrayList<Bombe> SacBombes;
 
     /**
      * constructeur
@@ -52,5 +55,12 @@ public class Perso {
     public int getY() {
         //getter
         return this.y;
+    }
+
+    /**
+     * @return le sac de bombe du personnage
+     */
+    public ArrayList<Bombe> getSacBombes(){
+        return this.SacBombes;
     }
 }

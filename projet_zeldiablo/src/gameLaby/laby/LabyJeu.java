@@ -18,24 +18,21 @@ public class LabyJeu implements Jeu {
     public void update(double secondes, Clavier clavier) {
         if (clavier.droite) {
             this.laby.deplacerPerso(Labyrinthe.DROITE);
-            this.MonstreDeplaccement();
         }
 
         if (clavier.gauche) {
             this.laby.deplacerPerso(Labyrinthe.GAUCHE);
-            this.MonstreDeplaccement();
         }
 
         if (clavier.haut) {
             this.laby.deplacerPerso(Labyrinthe.HAUT);
-            this.MonstreDeplaccement();
         }
 
         if (clavier.bas) {
             this.laby.deplacerPerso(Labyrinthe.BAS);
-            this.MonstreDeplaccement();
         }
 
+        this.MonstreDeplaccement();
 
     }
 
