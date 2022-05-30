@@ -1,0 +1,50 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+participant "lj : LabyJeu" as lj
+participant "b : Bombe" as b
+
+-> lj: update()
+activate lj
+lj -> b: DegatBombe()
+activate b
+loop i
+loop !finis && j!=range+1
+alt i==0
+alt laby.getMur(X+j,Y)
+else
+b -> b : add(new Position(X+j,Y))
+b --> b
+end
+end
+alt i==1
+alt laby.getMur(X-j,Y)
+else
+b -> b : add(new Position(X-j,Y))
+b --> b
+end
+end
+alt i==2
+alt laby.getMur(X,Y+j)
+else
+b -> b : add(new Position(X,Y+j))
+b --> b
+end
+end
+alt i==3
+alt laby.getMur(X,Y-j)
+else
+b -> b : add(new Position(X,Y-j))
+b --> b
+end
+end
+end
+end
+
+
+lj <--b
+deactivate b
+<-- lj
+deactivate lj
+
+@enduml
