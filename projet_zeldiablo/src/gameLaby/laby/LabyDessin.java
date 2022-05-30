@@ -44,6 +44,13 @@ public class LabyDessin implements DessinJeu {
         y = monstre.getY();
         gc.fillOval(x*40, y*40, 40, 40);
 
+        for(int i = 0;i<p.getSacBombes().size();i++) {
+            gc.setFill(Color.BLACK);
+            Bombe b = p.getSacBombes().get(i);
+            x = b.getX();
+            y = b.getY();
+            gc.fillOval(x * 40, y * 40, 40, 40);
+        }
 
 
     }
