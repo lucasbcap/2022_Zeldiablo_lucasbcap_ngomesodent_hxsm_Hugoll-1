@@ -50,7 +50,16 @@ public class LabyDessin implements DessinJeu {
             x = b.getX();
             y = b.getY();
             gc.fillOval(x * 40, y * 40, 40, 40);
+            for(int j = 0;j<p.getSacBombes().get(i).getCaseExplosion().size();j++) {
+                gc.setFill(Color.YELLOW);
+                Position pos = p.getSacBombes().get(i).getCaseExplosion().get(j);
+                x = pos.getX();
+                y = pos.getY();
+                gc.fillOval(x * 40, y * 40, 40, 40);
+            }
         }
+
+
 
 
     }
