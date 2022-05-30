@@ -5,6 +5,7 @@ sont en nombre limitées, leur timer est initialisé lorsqu'elles sont posées.
 
 Critères de validation
 • Lorsqu'un héros décide d'attaquer, il pose une bombe sur sa case.
+- La bombe est posé grâce à la touche espace du clavier
 • Le héros peut sortir de sa case, mais la case de la bombe n'est plus traversable
 tant que la bombe n'a pas explosé.
 • Lorsque le timer de la bombe arrive à 0, la bombe explose et effectue des dégâts
