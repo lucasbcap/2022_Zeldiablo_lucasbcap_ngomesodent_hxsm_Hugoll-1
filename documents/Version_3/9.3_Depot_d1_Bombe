@@ -19,10 +19,10 @@ remplacement sur le labyrinthe.
 -(Optionnel) Ajout d'une image pour la bombe
 
 Test :
-- Vérification que la bombe est bien posé.
-- Vérification que la bombe explose à la fin du timer
-- Vérification que le personnage ne traverse pas la bombe
-- Vérification qu'il n'y ai pas plus de 3 bombes à la fois sur le terrain
+- Vérification que la bombe est bien posé. (Vérifié visuellement et Test nbBombe)
+- Vérification que la bombe explose à la fin du timer (Vérifié visuellement)
+- Vérification que le personnage ne traverse pas la bombe (Ne fonctionne pas actuellement)
+- Vérification qu'il n'y ai pas plus de 3 bombes à la fois sur le terrain (Test nbMaxBombe)
 - Vérification que le personnage peut reposer une bombe après l'explosion d'une autre
 - Vérification visuel de la bombe
 
