@@ -1,0 +1,59 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class Perso{
+- x : int
+- y : int
++ Perso(int,int)
++ etrePresent(int,int) : boolean
++ getX() : int
++ getY() : int
+}
+
+class Labyrinthe{
++ {static} MUR : char
++ {static} PJ : char
++ {static} VIDE : char
++ {static} HAUT : String
++ {static} BAS : String
++ {static} GAUCHE : String
++ {static} DROITE : String
++ pj : Perso
++ murs : boolean[][]
++ Labyrinthe(String)
++ deplacerPerso(String) : void
++ etreFini() : boolean
++ getMur(int,int) : boolean
++ getSuivant(int, int, String):int[]
++ deplacerMonstre(String):void
++ etreFini() : boolean
++ getLengthY():int
++ getLengthX():int
++ getMur(int, int) : boolean
+}
+
+
+class LabyJeu{
+- laby : Labyrinthe
++LabyJeu()
++update(double,Clavier) : void
++init() : void
++MonstreDeplaccement() : void
++etreFini():boolean
++getLaby() : Labyrinthe
+}
+
+class LabyDessin{
++ dessinerJeu(Jeu, Canvas)
+}
+class MainLaby{
++ main(String[] args) : void
+}
+
+
+
+LabyJeu   "1" --> "1"  Labyrinthe: laby
+Labyrinthe "1" --> "1"  Perso: -pj
+
+
+@enduml

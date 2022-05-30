@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+[-> LabyJeu: update()
+LabyJeu -> Perso: DepotBombe();
+Perso -> Bombe: new Bombe(int x , int y);
+Bombe --> Perso : void
+Bombe -> Perso : SacBombe.add(Bombe);
+Perso --> Bombe : void
+Perso --> LabyJeu : void
+LabyJeu -->[ : void
+
+@enduml
