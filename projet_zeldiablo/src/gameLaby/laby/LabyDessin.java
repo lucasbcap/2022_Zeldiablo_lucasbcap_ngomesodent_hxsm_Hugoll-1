@@ -5,7 +5,9 @@ import gameArkanoid.Raquette;
 import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
@@ -18,12 +20,20 @@ public class LabyDessin implements DessinJeu {
 
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
-
+        //Image img = new Image(getClass().getResourceAsStream("murs.png"));
         for(int i =0;i<laby.getLaby().getLength();i++){
             for(int j = 0;j< laby.getLaby().getLengthY();j++){
                 if(laby.getLaby().getMur(i,j)){
-                    gc.setFill(Color.BLACK);
-                    gc.fillRect(i*40, j*40, 40, 40);
+                    if(laby.getLaby().getMurF(i,j)){
+                        //gc.setFill(new ImagePattern(img));
+                        gc.setFill(Color.MAROON);
+                        gc.fillRect(i*40, j*40, 40, 40);
+                    }
+                    else{
+                        gc.setFill(Color.BLACK);
+                        gc.fillRect(i*40, j*40, 40, 40);
+                    }
+
                 }
                 else{
                     gc.setFill(Color.WHITE);

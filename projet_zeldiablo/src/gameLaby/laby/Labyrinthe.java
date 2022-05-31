@@ -16,10 +16,10 @@ public class Labyrinthe {
      * Constantes char
      */
     public static final char MUR = 'X';
+    public static final char MURF = 'F';
     public static final char PJ = 'P';
     public static final char VIDE = '.';
     public static final char MONSTRE = 'M';
-    public static final char BOMBE = 'B';
 
     /**
      * constantes actions possibles
@@ -43,6 +43,11 @@ public class Labyrinthe {
      * les murs du labyrinthe
      */
     public boolean[][] murs;
+
+    /**
+     * les murs friables du labyrinthe
+     */
+    public boolean[][] mursF;
 
     /**
      * retourne la case suivante selon une actions
@@ -97,6 +102,7 @@ public class Labyrinthe {
 
         // creation labyrinthe vide
         this.murs = new boolean[nbColonnes][nbLignes];
+        this.mursF = new boolean[nbColonnes][nbLignes];
         this.pj = null;
         this.m = null;
 
@@ -115,19 +121,27 @@ public class Labyrinthe {
                 switch (c) {
                     case MUR:
                         this.murs[colonne][numeroLigne] = true;
+                        this.mursF[colonne][numeroLigne] = false;
+                        break;
+                    case MURF:
+                        this.murs[colonne][numeroLigne] = true;
+                        this.mursF[colonne][numeroLigne] = true;
                         break;
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
+                        this.mursF[colonne][numeroLigne] = false;
                         break;
                     case PJ:
                         // pas de mur
                         this.murs[colonne][numeroLigne] = false;
+                        this.mursF[colonne][numeroLigne] = false;
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
                         break;
                     case MONSTRE:
                         // pas de mur
                         this.murs[colonne][numeroLigne] = false;
+                        this.mursF[colonne][numeroLigne] = false;
                         this.m = new Perso(colonne, numeroLigne);
                         break;
 
@@ -140,7 +154,7 @@ public class Labyrinthe {
             ligne = bfRead.readLine();
             numeroLigne++;
         }
-        if((this.m.getX()==this.pj.getX() && this.m.getY()==this.pj.getY())){
+        if(m.equals(pj)){
             throw new Error("Monstre et Personnage confondus");
         }
         // ferme fichier
@@ -181,6 +195,11 @@ public class Labyrinthe {
                 p1.setY(suivante.getY());
             }
         }
+    }
+
+    public void casserMurF(int x,int y){
+        this.murs[x][y]=false;
+        this.mursF[x][y]=false;
     }
 
 
@@ -226,5 +245,17 @@ public class Labyrinthe {
     public boolean getMur(int x, int y) {
         // utilise le tableau de boolean
         return this.murs[x][y];
+    }
+
+    /**
+     * return murF en (i,j)
+     *
+     * @param x
+     * @param y
+     * @return
+     */
+    public boolean getMurF(int x, int y) {
+        // utilise le tableau de boolean
+        return this.mursF[x][y];
     }
 }

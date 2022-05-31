@@ -22,21 +22,28 @@ public class Bombe extends Position {
                 int Y = this.getY();
 
                 //On choisit la direction
-                if(i==0){
-                    X = X+j;
-                }
-                if(i==1){
-                    X = X-j;
-                }
-                if(i==2){
-                    Y = Y+j;
-                }
-                if(i==3){
-                    Y = Y-j;
+                switch (i) {
+                    case 0:
+                        X = X + j;
+                        break;
+                    case 1:
+                        X = X - j;
+                        break;
+                    case 2:
+                        Y = Y + j;
+                        break;
+                    case 3:
+                        Y = Y - j;
+                        break;
+                    default:
+                        break;
                 }
 
-                // on regarde si il y a un mur
                 if(laby.getMur(X,Y)){
+                    if(laby.getMurF(X,Y)){
+                        // si oui on change de direction
+                        laby.casserMurF(X,Y);
+                    }
                     // si oui on change de direction
                     finis = true;
                 }
