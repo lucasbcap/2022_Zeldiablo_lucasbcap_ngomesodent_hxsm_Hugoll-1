@@ -1,0 +1,19 @@
+Murs Friables + Upgrades
+
+Certain murs sont friables et se casse grace à l'explosion d'une bombe
+Les murs qui explosent on une chance de drop une upgrade que le joueur pourras ramasser
+
+Critères de validation 
+- Les murs friables on les mêmes critéres que les murs 
+- Les murs friables disparaissent grace à l explosion
+- Des upgrades apparaissent aléatoirement quand un mur a explosé
+- Une upgrade maximum pas mur et apparaissent la où le murs à été cassé
+- les murs friables sont en marrons
+- les upgrades sont divisée en 2 ( voir inventaire )
+- l explosion s'arrete dans une direction quand un mur friable est cassé
+
+Test : 
+- Vérification de la disparision des murs
+- Vérification du spawn d'item au bonne endroit
+- Vérification colissions Perso
+- Vérification si le Perso peut passer sur les items
