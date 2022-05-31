@@ -1,0 +1,20 @@
+Bilan de la vesion 3
+
+Répartition des tâches :
+Lucas : Gestion GitHub, Diagramme de classe et Séquence en binôme avec Hugolin, Ecriture du code de DéposerBombe
+Hugolin : Diagramme de classe et Séquence en binôme avec Lucas, Ecriure des documents txt et des tests de DéposerBombe
+Romain : Diagramme de classe et Séquence en binôme avec Noam, Ecriture du code de ExploserBombe
+Noam : Diagramme de classe et Séquence en binôme avec Lucas
+
+Avancement des tâches
+
+- Dépôt bombe fonctionne comme prévu et les tests fonctionnent
+- Dégats d'une bombe fonctionne comme prévu et les tests ont été fait visuellement/ à retravailler
+- Dégâts d'une bombe n'inflige actuellement pas de dégâts;
+
+
+Difficultés rencontrées
+- Aucune sur le code de dépotBombe
+- Une sur un test de dépotBombe qui ne pouvait pas être fait
+- Le code de dégatBombe peut être amélioré
+- Difficultés à démarrer la métode dégatBombe
