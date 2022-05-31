@@ -6,12 +6,11 @@ import java.util.ArrayList;
 /**
  * gere un personnage situe en x,y
  */
-public class Perso {
+public class Perso extends Position{
 
     /**
-     * position du personnage
+     * Bombes posee sur le terrain
      */
-    int x, y;
     private ArrayList<Bombe> SacBombes;
 
     /**
@@ -21,8 +20,7 @@ public class Perso {
      * @param dy position selon y
      */
     public Perso(int dx, int dy) {
-        this.x = dx;
-        this.y = dy;
+        super(dx,dy);
         this.SacBombes = new ArrayList<Bombe>();
     }
 
@@ -35,7 +33,7 @@ public class Perso {
      */
     public boolean etrePresent(int dx, int dy) {
 
-        return (this.x == dx && this.y == dy);
+        return (this.getX() == dx && this.getY() == dy);
     }
 
     public void DepotBombe(int x , int y){
@@ -49,21 +47,6 @@ public class Perso {
     // GETTER
     // ############################################
 
-    /**
-     * @return position x du personnage
-     */
-    public int getX() {
-        // getter
-        return this.x;
-    }
-
-    /**
-     * @return position y du personnage
-     */
-    public int getY() {
-        //getter
-        return this.y;
-    }
 
     /**
      * @return le sac de bombe du personnage

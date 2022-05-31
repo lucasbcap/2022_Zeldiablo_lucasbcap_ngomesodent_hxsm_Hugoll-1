@@ -2,16 +2,13 @@ package gameLaby.laby;
 
 import java.util.ArrayList;
 
-public class Bombe {
+public class Bombe extends Position {
 
-    private int x;
-    private int y;
     private int temps = 15;
     private ArrayList<Position> caseExplosion;
 
     public Bombe(int x,int y){
-        this.x = x ;
-        this.y = y;
+        super(x,y);
         this.caseExplosion = new ArrayList<>();
     }
 
@@ -19,47 +16,34 @@ public class Bombe {
 
         for(int i = 0; i<4 ; i++){
             boolean finis = false;
-            int X=this.x;
-            int Y = this.y;
             int j = 1;
             while(!finis && j!=range+1){
+                int X=this.getX();
+                int Y = this.getY();
+
+                //On choisit la direction
                 if(i==0){
-                    if(laby.getMur(X+j,Y)){
-                        finis = true;
-                    }
-                    else{
-                        caseExplosion.add(new Position(X+j,Y));
-                    }
+                    X = X+j;
                 }
-
                 if(i==1){
-                    if(laby.getMur(X-j,Y)){
-                        finis = true;
-                    }
-                    else{
-                        caseExplosion.add(new Position(X-j,Y));
-                    }
+                    X = X-j;
                 }
-
                 if(i==2){
-                    if(laby.getMur(X,Y+j)){
-                        finis = true;
-                    }
-                    else{
-                        caseExplosion.add(new Position(X,Y+j));
-                    }
+                    Y = Y+j;
                 }
-
                 if(i==3){
-                    if(laby.getMur(X,Y-j)){
-                        finis = true;
-                    }
-                    else{
-                        caseExplosion.add(new Position(X,Y-j));
-                    }
+                    Y = Y-j;
                 }
 
-
+                // on regarde si il y a un mur
+                if(laby.getMur(X,Y)){
+                    // si oui on change de direction
+                    finis = true;
+                }
+                else {
+                    // sinon on fais exploser la case et on continue
+                    caseExplosion.add(new Position(X, Y));
+                }
                 j++;
 
 
@@ -73,21 +57,6 @@ public class Bombe {
     // GETTER
     // ############################################
 
-    /**
-     * @return position x de la bombe
-     */
-    public int getX() {
-        // getter
-        return this.x;
-    }
-
-    /**
-     * @return position y de la bombe
-     */
-    public int getY() {
-        //getter
-        return this.y;
-    }
 
     /**
      * @return le temps avant explosion de la bombe

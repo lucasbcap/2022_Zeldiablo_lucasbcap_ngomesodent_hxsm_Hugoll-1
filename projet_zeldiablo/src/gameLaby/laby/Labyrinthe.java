@@ -47,34 +47,34 @@ public class Labyrinthe {
     /**
      * retourne la case suivante selon une actions
      *
-     * @param x      case depart
-     * @param y      case depart
+     * @param pos position de depart
      * @param action action effectuee
      * @return case suivante
      */
-    static int[] getSuivant(int x, int y, String action) {
+    static Position getSuivant(Position pos, String action) {
+        int x = pos.getX();
+        int y = pos.getY();
         switch (action) {
             case HAUT:
                 // on monte une ligne
-                y--;
+                y = pos.getY()-1;
                 break;
             case BAS:
                 // on descend une ligne
-                y++;
+                y= pos.getY()+1;
                 break;
             case DROITE:
                 // on augmente colonne
-                x++;
+                x = pos.getX()+1;
                 break;
             case GAUCHE:
                 // on augmente colonne
-                x--;
+                x = pos.getX()-1;
                 break;
             default:
                 throw new Error("action inconnue");
         }
-        int[] res = {x, y};
-        return res;
+        return new Position(x,y);
     }
 
     /**
@@ -153,67 +153,36 @@ public class Labyrinthe {
      * gere la collision avec les murs
      *
      * @param action une des actions possibles
+     * @param p1 personnage a deplacer
+     * @param p2 personnage sur lequelle ne doit pas etre p1 (si il y en a plein faire une liste)
      */
-    public void deplacerPerso(String action) {
+    public void deplacerPerso(String action,Perso p1 , Perso p2) {
         // case courante
-        int[] courante = {this.pj.x, this.pj.y};
+        Position courante = new Position(p1.getX(), p1.getY());
 
-        int[] Monstre = {this.m.x, this.m.y};
+        Position p2Pos = new Position(p2.getX(), p2.getY());
 
-        ArrayList<Bombe> Bombes = pj.getSacBombes();
+        ArrayList<Bombe> Bombes = this.pj.getSacBombes();
         boolean bouger = true;
 
         // calcule case suivante
-        int[] suivante = getSuivant(courante[0], courante[1], action);
+        Position suivante = getSuivant(courante, action);
 
         // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]] && !(Monstre[0]==suivante[0] && Monstre[1]==suivante[1])) {
+        if (!this.murs[suivante.getX()][suivante.getY()] && !(p2Pos.equals(suivante))) {
             for(int i = 0 ; i<Bombes.size();i++){
-                if(Bombes.get(i).getX()==suivante[0] && Bombes.get(i).getY()==suivante[1]){
+                if(Bombes.get(i).equals(suivante)){
                     bouger = false;
                 }
             }
             if(bouger) {
                 // on met a jour personnage
-                this.pj.x = suivante[0];
-                this.pj.y = suivante[1];
+                p1.setX(suivante.getX());
+                p1.setY(suivante.getY());
             }
         }
     }
 
-
-    /**
-     * deplace le monstre aleatoirement.
-     * gere la collision avec les murs
-     *
-     * @param action une des actions possibles
-     */
-    public void deplacerMonstre(String action) {
-        // case courante
-        int[] courante = {this.pj.x, this.pj.y};
-
-        int[] Monstre = {this.m.x, this.m.y};
-
-        ArrayList<Bombe> Bombes = pj.getSacBombes();
-        boolean bouger = true;
-
-        // calcule case suivante
-        int[] suivante = getSuivant(Monstre[0], Monstre[1], action);
-
-        // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante[0]][suivante[1]] && !(courante[0]==suivante[0] && courante[1]==suivante[1])) {
-            for(int i = 0 ; i<Bombes.size();i++){
-                if(Bombes.get(i).getX()==suivante[0] && Bombes.get(i).getY()==suivante[1]){
-                    bouger = false;
-                }
-            }
-            if(bouger) {
-                // on met a jour personnage
-                this.m.x = suivante[0];
-                this.m.y = suivante[1];
-            }
-        }
-    }
 
 
     /**

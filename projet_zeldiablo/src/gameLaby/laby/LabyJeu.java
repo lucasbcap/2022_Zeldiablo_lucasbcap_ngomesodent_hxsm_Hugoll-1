@@ -17,19 +17,19 @@ public class LabyJeu implements Jeu {
     @Override
     public void update(double secondes, Clavier clavier) {
         if (clavier.droite) {
-            this.laby.deplacerPerso(Labyrinthe.DROITE);
+            this.laby.deplacerPerso(Labyrinthe.DROITE,this.laby.pj,this.laby.m);
         }
 
         if (clavier.gauche) {
-            this.laby.deplacerPerso(Labyrinthe.GAUCHE);
+            this.laby.deplacerPerso(Labyrinthe.GAUCHE,this.laby.pj,this.laby.m);
         }
 
         if (clavier.haut) {
-            this.laby.deplacerPerso(Labyrinthe.HAUT);
+            this.laby.deplacerPerso(Labyrinthe.HAUT,this.laby.pj,this.laby.m);
         }
 
         if (clavier.bas) {
-            this.laby.deplacerPerso(Labyrinthe.BAS);
+            this.laby.deplacerPerso(Labyrinthe.BAS,this.laby.pj,this.laby.m);
         }
 
         if (clavier.espace) {
@@ -47,14 +47,14 @@ public class LabyJeu implements Jeu {
             }
         }
 
-        this.MonstreDeplaccement();
+        this.MonstreDeplacement();
     }
 
     @Override
     public void init() {
     }
 
-    public void MonstreDeplaccement(){
+    public void MonstreDeplacement(){
         Random rd = new Random();
 
         int nombre = rd.nextInt(4);
@@ -77,7 +77,7 @@ public class LabyJeu implements Jeu {
             default:
                 break;
         }
-        this.laby.deplacerMonstre(pos);
+        this.laby.deplacerPerso(pos,this.laby.m,this.laby.pj);
     }
 
     @Override
