@@ -1,0 +1,19 @@
+7.1 Inventaire
+
+Des objets (permettant d'augmenter le nombre de bombes et la portée de l'explosion) ont une chance d'apparaître lorsque
+l'on casse un mur du labyrinthe. Lorsque le héros appuie sur la touche d'utilisation ("E" par défaut), il récupère
+les objets de la case où il se trouve et le nombre de bombes ou la portée de l'explosion se met à jour.
+
+Critères de validation
+
+- L'inventaire est de taille infinie.
+- Lorsque le joueur cherche à prendre un objet alors qu'il n'y a rien sur la case où
+il se trouve, rien ne se passe.
+- Lorsqu'un joueur prend un objet, l'objet disparait du labyrinthe (et n'est plus
+affiché) mais apparait dans son inventaire.
+- A chaque évolution du jeu, le jeu affiche dans la console l'inventaire du héros.
+- Les objets sont affichés dans le labyrinthe tant qu'ils sont présents (sous la forme
+d'un petit cercle bleu pour les bombes et d'un petit cercle vert pour la portée des explosions)
+- Deux icônes s'affiche en bas à droite de l'interface indiquant le nombre de bombes
+et la portée des explosions courants.
+- Les icônes se mettent à jour lorsque l'on ramasse un objet, ainsi que la portée et le nombre de bombes dans le jeu.
