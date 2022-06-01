@@ -17,7 +17,15 @@ public class UpgradeBombe implements Upgrade{
     @Override
     public void activerUpgrade(Position p) {
         Perso.nbBombe+=1;
-        this.tab.remove(p);
+        boolean trouver = false;
+        int i = 0;
+        while(!trouver && i<this.tab.size()){
+            if(this.tab.get(i).equals(p)){
+                this.tab.remove(i);
+                trouver = true;
+            }
+            i++;
+        }
     }
 
     @Override
