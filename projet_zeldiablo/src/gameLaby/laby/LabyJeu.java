@@ -38,7 +38,7 @@ public class LabyJeu implements Jeu {
 
         for(int i=0;i<this.laby.pj.getSacBombes().size();i++){
             this.laby.pj.getSacBombes().get(i).setTemps( this.laby.pj.getSacBombes().get(i).getTemps()-1);
-            if(this.laby.pj.getSacBombes().get(i).getTemps()<0){
+            if(this.laby.pj.getSacBombes().get(i).getTemps()==0){
                 this.laby.pj.getSacBombes().get(i).DegatBombe(3,laby);
                 //this.laby.pj.getSacBombes().remove(i);
             }
