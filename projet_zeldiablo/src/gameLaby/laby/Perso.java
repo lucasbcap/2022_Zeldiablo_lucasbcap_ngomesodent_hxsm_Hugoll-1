@@ -39,7 +39,7 @@ public class Perso extends Position{
     }
 
     public void DepotBombe(int x , int y){
-        if(this.SacBombes.size()<3) {
+        if(this.SacBombes.size()<nbBombe) {
             Bombe b = new Bombe(x, y);
             this.SacBombes.add(b);
         }
