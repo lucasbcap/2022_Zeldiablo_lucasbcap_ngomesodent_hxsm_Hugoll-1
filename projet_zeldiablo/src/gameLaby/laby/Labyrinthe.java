@@ -268,6 +268,10 @@ public class Labyrinthe {
         return this.murs[x][y];
     }
 
+    public ArrayList<Upgrade> getTabUpgrade() {
+        return tabUpgrade;
+    }
+
     /**
      * return murF en (i,j)
      *
