@@ -48,10 +48,9 @@ public class Bombe extends Position {
                         laby.casserMurF(X,Y);
                         Random rd = new Random();
                         int random = rd.nextInt(3);
-                        if(random!=0){
+                        if(random!=2){
                             laby.getTabUpgrade().get(random).ajouterUpgrade(new Position(X,Y));
                         }
-
                     }
                     // si oui on change de direction
                     finis = true;
