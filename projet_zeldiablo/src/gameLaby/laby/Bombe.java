@@ -49,7 +49,7 @@ public class Bombe extends Position {
                         Random rd = new Random();
                         int random = rd.nextInt(3);
                         if(random!=0){
-                            laby.getTabUpgrade();
+                            laby.getTabUpgrade().get(random).ajouterUpgrade(new Position(X,Y));
                         }
 
                     }
