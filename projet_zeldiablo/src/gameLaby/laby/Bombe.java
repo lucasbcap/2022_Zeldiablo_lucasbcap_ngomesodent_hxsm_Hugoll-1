@@ -7,7 +7,7 @@ public class Bombe extends Position {
     private int temps = 15;
     private ArrayList<Position> caseExplosion;
 
-    public static int range;
+    public static int range = 1;
 
     public Bombe(int x,int y){
         super(x,y);

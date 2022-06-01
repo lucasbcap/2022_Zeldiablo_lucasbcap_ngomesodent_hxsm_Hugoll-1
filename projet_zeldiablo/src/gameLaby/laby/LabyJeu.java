@@ -28,6 +28,10 @@ public class LabyJeu implements Jeu {
             this.laby.deplacerPerso(Labyrinthe.HAUT,this.laby.pj,this.laby.m);
         }
 
+        if (clavier.e) {
+            System.out.println("Hello");
+        }
+
         if (clavier.bas) {
             this.laby.deplacerPerso(Labyrinthe.BAS,this.laby.pj,this.laby.m);
         }
@@ -39,7 +43,7 @@ public class LabyJeu implements Jeu {
         for(int i=0;i<this.laby.pj.getSacBombes().size();i++){
             this.laby.pj.getSacBombes().get(i).setTemps( this.laby.pj.getSacBombes().get(i).getTemps()-1);
             if(this.laby.pj.getSacBombes().get(i).getTemps()==0){
-                this.laby.pj.getSacBombes().get(i).DegatBombe(3,laby);
+                this.laby.pj.getSacBombes().get(i).DegatBombe(Bombe.range,laby);
                 //this.laby.pj.getSacBombes().remove(i);
             }
             if(this.laby.pj.getSacBombes().get(i).getTemps()<-5){
