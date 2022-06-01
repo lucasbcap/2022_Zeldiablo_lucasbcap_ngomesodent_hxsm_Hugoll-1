@@ -1,0 +1,18 @@
+Bilan de la version 4
+
+Répartition des tâches :
+Lucas :  Diagramme de séquence de MurFriable en binôme avec Hugolin, Gestion GitHub, Ecriture du code de MurFriable, correction de bug, création des updates et des fichiers txt,
+Hugolin : Diagramme de séquence de MurFriable en binôme avec Lucas, Aide au code de MurFriable, Correction de bugs, gestion des anciens tests et création des tests de MurFriable
+Romain : Diagramme Séquence en binôme avec Noam, Ecriture de UpgradeBombe + graphisme + contrôle de Upgrade
+Noam : Diagramme de classe et Séquence en binôme avec Romain, Ecriture de récupererObjet, aide pour Ecriture de UpgradeBombe
+
+Avancement des tâches
+
+- Mur Friable fonctionne comme prévu et les tests fonctionnent
+- recupererObjet fonctionne comme prévu
+
+
+
+Difficultés rencontrées
+- Aucune sur le code de murFriable
+- RecupererObjet à connu un bug majeur qui a été résolu
