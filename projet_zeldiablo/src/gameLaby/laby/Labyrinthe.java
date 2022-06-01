@@ -56,6 +56,9 @@ public class Labyrinthe {
      * @param action action effectuee
      * @return case suivante
      */
+
+    private ArrayList<Upgrade> tabUpgrade;
+
     static Position getSuivant(Position pos, String action) {
         int x = pos.getX();
         int y = pos.getY();
@@ -105,6 +108,9 @@ public class Labyrinthe {
         this.mursF = new boolean[nbColonnes][nbLignes];
         this.pj = null;
         this.m = null;
+        this.tabUpgrade = new ArrayList<Upgrade>();
+        this.tabUpgrade.add(new UpgradeBombe());
+        this.tabUpgrade.add(new UpgradeRange());
 
         // lecture des cases
         String ligne = bfRead.readLine();
@@ -202,7 +208,29 @@ public class Labyrinthe {
         this.mursF[x][y]=false;
     }
 
-
+    public boolean recupererObjet(){
+        UpgradeBombe tabBombe = (UpgradeBombe)this.tabUpgrade.get(0);
+        UpgradeRange tabRange = (UpgradeRange) this.tabUpgrade.get(1);
+        boolean trouve = false;
+        int i = 0;
+        while(!trouve && i<tabBombe.getTab().size()){
+            if(this.pj.equals(tabBombe.getTab().get(i))){
+                tabBombe.activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
+                trouve = true;
+            }
+            i++;
+        }
+        trouve = false;
+        int j = 0;
+        while(!trouve && j<tabRange.getTab().size()){
+            if(this.pj.equals(tabRange.getTab().get(i))){
+                tabRange.activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
+                trouve = true;
+            }
+            j++;
+        }
+        return trouve;
+    }
 
     /**
      * jamais fini
