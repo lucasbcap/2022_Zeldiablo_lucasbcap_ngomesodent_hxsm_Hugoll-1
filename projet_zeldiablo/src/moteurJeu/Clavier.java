@@ -80,7 +80,6 @@ public class Clavier {
             case SPACE:
                 this.espace = false;
                 break;
-
             case E:
                 this.e = false;
                 break;

@@ -13,7 +13,7 @@ public class Perso extends Position{
      */
     private ArrayList<Bombe> SacBombes;
 
-    public static int nbBombe;
+    public static int nbBombe = 1;
 
     /**
      * constructeur
@@ -39,7 +39,7 @@ public class Perso extends Position{
     }
 
     public void DepotBombe(int x , int y){
-        if(this.SacBombes.size()<nbBombe) {
+        if(this.SacBombes.size()<=nbBombe) {
             Bombe b = new Bombe(x, y);
             this.SacBombes.add(b);
         }

@@ -1,6 +1,7 @@
 package gameLaby.laby;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Bombe extends Position {
 
@@ -45,6 +46,7 @@ public class Bombe extends Position {
                     if(laby.getMurF(X,Y)){
                         // si oui on change de direction
                         laby.casserMurF(X,Y);
+                        Random rd = new Random();
                     }
                     // si oui on change de direction
                     finis = true;
