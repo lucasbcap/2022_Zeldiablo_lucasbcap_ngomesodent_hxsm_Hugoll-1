@@ -29,7 +29,7 @@ public class LabyJeu implements Jeu {
         }
 
         if (clavier.e) {
-            System.out.println("Hello");
+            this.laby.recupererObjet();
         }
 
         if (clavier.bas) {
