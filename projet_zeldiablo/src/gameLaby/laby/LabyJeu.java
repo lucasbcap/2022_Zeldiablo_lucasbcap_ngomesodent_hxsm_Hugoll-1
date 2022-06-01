@@ -40,6 +40,8 @@ public class LabyJeu implements Jeu {
             this.laby.pj.DepotBombe(this.laby.pj.getX(),this.laby.pj.getY());
         }
 
+
+
         for(int i=0;i<this.laby.pj.getSacBombes().size();i++){
             this.laby.pj.getSacBombes().get(i).setTemps( this.laby.pj.getSacBombes().get(i).getTemps()-1);
             if(this.laby.pj.getSacBombes().get(i).getTemps()==0){
