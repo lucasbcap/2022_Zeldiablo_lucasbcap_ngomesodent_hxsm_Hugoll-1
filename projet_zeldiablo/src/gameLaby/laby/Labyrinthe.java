@@ -209,23 +209,16 @@ public class Labyrinthe {
     }
 
     public boolean recupererObjet(){
-        UpgradeBombe tabBombe = (UpgradeBombe)this.tabUpgrade.get(0);
-        UpgradeRange tabRange = (UpgradeRange) this.tabUpgrade.get(1);
         boolean trouve = false;
         int i = 0;
-        while(!trouve && i<tabBombe.getTab().size()){
-            if(this.pj.equals(tabBombe.getTab().get(i))){
-                tabBombe.activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
-                trouve = true;
-            }
-            i++;
-        }
-        trouve = false;
         int j = 0;
-        while(!trouve && j<tabRange.getTab().size()){
-            if(this.pj.equals(tabRange.getTab().get(i))){
-                tabRange.activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
-                trouve = true;
+        while(!trouve && j!=this.tabUpgrade.size()){
+            while(!trouve && i<this.tabUpgrade.get(i).getTab().size()){
+                if(this.pj.equals(this.tabUpgrade.get(i).getTab().get(j))){
+                    this.tabUpgrade.get(i).activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
+                    trouve = true;
+                }
+                i++;
             }
             j++;
         }
