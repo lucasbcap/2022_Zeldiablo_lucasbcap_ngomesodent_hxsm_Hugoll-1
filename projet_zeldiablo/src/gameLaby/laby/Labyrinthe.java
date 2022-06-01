@@ -210,12 +210,16 @@ public class Labyrinthe {
 
     public boolean recupererObjet(){
         boolean trouve = false;
-        int i = 0;
         int j = 0;
-        while(!trouve && j!=this.tabUpgrade.size()){
-            while(!trouve && i<this.tabUpgrade.get(i).getTab().size()){
-                if(this.pj.equals(this.tabUpgrade.get(i).getTab().get(j))){
-                    this.tabUpgrade.get(i).activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
+        while(!trouve && j!=2){
+            int i = 0;
+            while(!trouve && i<this.tabUpgrade.get(j).getTab().size()){
+                // La boucle pour avoir tout les element d un tableau de position donc upgradeBombe ou range
+                System.out.println("oui");
+                if(this.pj.equals(this.tabUpgrade.get(j).getTab().get(i))){
+                    // si le personnage est sur une upgrade alors il l active
+                    System.out.println("oui2");
+                    this.tabUpgrade.get(j).activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
                     trouve = true;
                 }
                 i++;
