@@ -18,6 +18,7 @@ public class LabyDessin implements DessinJeu {
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
         LabyJeu laby = (LabyJeu)jeu;
 
+
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
         //Image img = new Image(getClass().getResourceAsStream("murs.png"));
@@ -69,7 +70,21 @@ public class LabyDessin implements DessinJeu {
             }
         }
 
+        for(int i = 0;i<laby.getLaby().getTabUpgrade().get(0).getTab().size();i++) {
+            gc.setFill(Color.BLUE);
+            Bombe b = p.getSacBombes().get(i);
+            x = b.getX();
+            y = b.getY();
+            gc.fillOval(x * 40, y * 40, 20, 20);
+        }
 
+        for(int i = 0;i<laby.getLaby().getTabUpgrade().get(1).getTab().size();i++) {
+            gc.setFill(Color.GREEN);
+            Bombe b = p.getSacBombes().get(i);
+            x = b.getX();
+            y = b.getY();
+            gc.fillOval(x * 40, y * 40, 20, 20);
+        }
 
 
     }
