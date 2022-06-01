@@ -5,6 +5,10 @@ import java.util.ArrayList;
 public class UpgradeBombe implements Upgrade{
     private ArrayList<Position> tab;
 
+    public UpgradeBombe(){
+        this.tab= new ArrayList<Position>();
+    }
+
     @Override
     public void ajouterUpgrade(Position p) {
         this.tab.add(p);
