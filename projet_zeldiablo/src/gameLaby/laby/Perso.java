@@ -13,6 +13,8 @@ public class Perso extends Position{
      */
     private ArrayList<Bombe> SacBombes;
 
+    public static int nbBombe;
+
     /**
      * constructeur
      *

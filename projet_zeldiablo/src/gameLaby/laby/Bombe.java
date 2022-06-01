@@ -7,6 +7,8 @@ public class Bombe extends Position {
     private int temps = 15;
     private ArrayList<Position> caseExplosion;
 
+    public static int range;
+
     public Bombe(int x,int y){
         super(x,y);
         this.caseExplosion = new ArrayList<>();
