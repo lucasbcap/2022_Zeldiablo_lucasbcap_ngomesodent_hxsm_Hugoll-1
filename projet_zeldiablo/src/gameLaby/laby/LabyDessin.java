@@ -6,27 +6,38 @@ import javafx.application.Application;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.stage.Stage;
 import moteurJeu.DessinJeu;
 import moteurJeu.Jeu;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 public class LabyDessin implements DessinJeu {
+
+
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
         LabyJeu laby = (LabyJeu)jeu;
 
+        Image im = new Image("file:images/bombe.png");
+
 
         final GraphicsContext gc = canvas.getGraphicsContext2D();
+
+
 
         //Image img = new Image(getClass().getResourceAsStream("murs.png"));
         for(int i =0;i<laby.getLaby().getLength();i++){
             for(int j = 0;j< laby.getLaby().getLengthY();j++){
                 if(laby.getLaby().getMur(i,j)){
                     if(laby.getLaby().getMurF(i,j)){
-                        //gc.setFill(new ImagePattern(img));
+                        //gc.setFill(new ImagePattern(new Image(f)));
                         gc.setFill(Color.MAROON);
                         gc.fillRect(i*40, j*40, 40, 40);
                     }
@@ -49,14 +60,18 @@ public class LabyDessin implements DessinJeu {
         double y = p.getY();
         gc.fillOval(x*40, y*40, 40, 40);
 
-        gc.setFill(Color.VIOLET);
-        Perso monstre = laby.getLaby().m;
-        x = monstre.getX();
-        y = monstre.getY();
-        gc.fillOval(x*40, y*40, 40, 40);
+
+        for(int i = 0;i<laby.getLaby().monstre.size();i++) {
+            gc.setFill(Color.VIOLET);
+            Perso monstre = laby.getLaby().monstre.get(i);
+            x = monstre.getX();
+            y = monstre.getY();
+            gc.fillOval(x*40, y*40, 40, 40);
+        }
+
 
         for(int i = 0;i<p.getSacBombes().size();i++) {
-            gc.setFill(Color.BLACK);
+            gc.setFill(new ImagePattern(im));
             Bombe b = p.getSacBombes().get(i);
             x = b.getX();
             y = b.getY();
@@ -85,7 +100,6 @@ public class LabyDessin implements DessinJeu {
             y = uR.getY();
             gc.fillOval((x * 40)+10, (y * 40)+10, 20, 20);
         }
-
 
     }
 }

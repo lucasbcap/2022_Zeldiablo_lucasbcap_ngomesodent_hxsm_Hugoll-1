@@ -4,10 +4,12 @@ import moteurJeu.Clavier;
 import moteurJeu.Jeu;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class LabyJeu implements Jeu {
 
+    public int temps = 0;
     private final Labyrinthe laby;
 
     public LabyJeu(String nomFichier) throws IOException {
@@ -16,16 +18,17 @@ public class LabyJeu implements Jeu {
 
     @Override
     public void update(double secondes, Clavier clavier) {
+        temps++;
         if (clavier.droite) {
-            this.laby.deplacerPerso(Labyrinthe.DROITE,this.laby.pj,this.laby.m);
+            this.laby.deplacerPerso(Labyrinthe.DROITE,this.laby.pj,this.laby.monstre);
         }
 
         if (clavier.gauche) {
-            this.laby.deplacerPerso(Labyrinthe.GAUCHE,this.laby.pj,this.laby.m);
+            this.laby.deplacerPerso(Labyrinthe.GAUCHE,this.laby.pj,this.laby.monstre);
         }
 
         if (clavier.haut) {
-            this.laby.deplacerPerso(Labyrinthe.HAUT,this.laby.pj,this.laby.m);
+            this.laby.deplacerPerso(Labyrinthe.HAUT,this.laby.pj,this.laby.monstre);
         }
 
         if (clavier.e) {
@@ -33,7 +36,7 @@ public class LabyJeu implements Jeu {
         }
 
         if (clavier.bas) {
-            this.laby.deplacerPerso(Labyrinthe.BAS,this.laby.pj,this.laby.m);
+            this.laby.deplacerPerso(Labyrinthe.BAS,this.laby.pj,this.laby.monstre);
         }
 
         if (clavier.espace) {
@@ -53,14 +56,29 @@ public class LabyJeu implements Jeu {
             }
         }
 
-        this.MonstreDeplacement();
+        if(temps%3==0) {
+            for (int i = 0; i < this.laby.monstre.size(); i++) {
+                this.MonstreDeplacement(this.laby.monstre.get(i));
+            }
+        }
     }
 
     @Override
     public void init() {
     }
 
-    public void MonstreDeplacement(){
+
+
+    @Override
+    public boolean etreFini() {
+        return false;
+    }
+
+    public Labyrinthe getLaby(){
+        return laby;
+    }
+
+    public void MonstreDeplacement(Perso p){
         Random rd = new Random();
 
         int nombre = rd.nextInt(4);
@@ -83,16 +101,9 @@ public class LabyJeu implements Jeu {
             default:
                 break;
         }
-        this.laby.deplacerPerso(pos,this.laby.m,this.laby.pj);
-    }
-
-    @Override
-    public boolean etreFini() {
-        return false;
-    }
-
-    public Labyrinthe getLaby(){
-        return laby;
+        ArrayList<Perso> perso = new ArrayList<Perso>();
+        perso.add(this.laby.pj);
+        this.laby.deplacerPerso(pos,p,perso );
     }
 }
 
