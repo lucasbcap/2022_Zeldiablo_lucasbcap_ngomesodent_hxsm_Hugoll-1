@@ -1,0 +1,8 @@
+Certains types de monstres peuvent poser des bombes sur les cases.
+
+Critères de validation
+• La pose des bombes est régie par les même règles que celles de la pose d'une
+bombe pour le héros (cases bloquée, nombre maximal de bombes simultanément
+posées par héros, ...)
+- Les monstres gardent les caractéristique précédente
+- Le joueur peut recevoir des dégâts de la bombe et mourir
