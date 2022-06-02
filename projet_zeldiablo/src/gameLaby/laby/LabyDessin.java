@@ -56,7 +56,7 @@ public class LabyDessin implements DessinJeu {
                 }
             }
         }
-        gc.setFill(new ImagePattern(img.getImgPersoDroit()));
+        gc.setFill(new ImagePattern(Images.Perso));
         //gc.setFill(Color.RED);
         Perso p = laby.getLaby().pj;
         double x = p.getX();

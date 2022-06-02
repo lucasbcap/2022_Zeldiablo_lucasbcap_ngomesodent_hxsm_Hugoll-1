@@ -21,10 +21,12 @@ public class LabyJeu implements Jeu {
         temps++;
         if (clavier.droite) {
             this.laby.deplacerPerso(Labyrinthe.DROITE,this.laby.pj,this.laby.monstre);
+            Images.Perso=LabyDessin.img.getImgPersoDroit();
         }
 
         if (clavier.gauche) {
             this.laby.deplacerPerso(Labyrinthe.GAUCHE,this.laby.pj,this.laby.monstre);
+            Images.Perso=LabyDessin.img.getImgPersoGauche();
         }
 
         if (clavier.haut) {
@@ -60,8 +62,7 @@ public class LabyJeu implements Jeu {
             for (int i = 0; i < this.laby.monstre.size(); i++) {
                 this.MonstreDeplacement(this.laby.monstre.get(i));
                 Random rd = new Random();
-                int d = rd.nextInt(2);
-                if (d == 1){
+                if (rd.nextInt(20) == 4){
                     this.laby.monstre.get(i).DepotBombe(this.laby.monstre.get(i).getX(), this.laby.monstre.get(i).getY());
                 }
             }

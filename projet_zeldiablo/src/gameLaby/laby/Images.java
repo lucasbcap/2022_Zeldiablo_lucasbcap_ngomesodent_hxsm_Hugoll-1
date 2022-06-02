@@ -17,6 +17,8 @@ public class Images {
         this.imgMonstre=new Image("file:images/monstre.png");
         this.imgMurs = new Image("file:images/murs.png");
         this.imgMursFriables = new Image("file:images/mursF.png");
+        this.imgPersoDroit = new Image("file:images/PersoDroite.png");
+        this.imgPersoGauche = new Image("file:images/PersoGauche.png");
         Images.chargerDessin = false;
     }
 
