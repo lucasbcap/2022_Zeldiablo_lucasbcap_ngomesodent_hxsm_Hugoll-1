@@ -59,6 +59,10 @@ public class LabyJeu implements Jeu {
         if(temps%3==0) {
             for (int i = 0; i < this.laby.monstre.size(); i++) {
                 this.MonstreDeplacement(this.laby.monstre.get(i));
+                Random rd = new Random();
+                if (rd.nextInt(20) == 4){
+                    this.laby.monstre.get(i).DepotBombe(this.laby.monstre.get(i).getX(), this.laby.monstre.get(i).getY());
+                }
             }
         }
     }
