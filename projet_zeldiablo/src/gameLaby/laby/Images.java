@@ -10,8 +10,7 @@ public class Images {
     private Image imgMursFriables;
     private Image imgMonstre;
     private Image imgBouleDeFeu;
-
-
+    private Image imgBouleDeFeuUpgrade;
     private Image imgBombeUpgrade;
     public static Image Perso = new Image("file:images/PersoGauche.png");
     public static boolean chargerDessin = true ;
@@ -25,7 +24,12 @@ public class Images {
         this.imgPersoGauche = new Image("file:images/PersoGauche.png");
         this.imgBombeUpgrade = new Image("file:images/bombeUpgrade.png");
         this.imgBouleDeFeu = new Image("file:images/BouleDeFeu.png");
+        this.imgBouleDeFeuUpgrade = new Image("file:images/BouleDeFeuUpgrade.png");
         Images.chargerDessin = false;
+    }
+
+    public Image getImgBouleDeFeuUpgrade() {
+        return imgBouleDeFeuUpgrade;
     }
 
     public Image getImgBouleDeFeu() {

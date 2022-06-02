@@ -81,7 +81,8 @@ public class LabyDessin implements DessinJeu {
             y = b.getY();
             gc.fillOval(x * 40, y * 40, 40, 40);
             for(int j = 0;j<p.getSacBombes().get(i).getCaseExplosion().size();j++) {
-                gc.setFill(Color.YELLOW);
+                gc.setFill(new ImagePattern(img.getImgBouleDeFeu()));
+                //gc.setFill(Color.YELLOW);
                 Position pos = p.getSacBombes().get(i).getCaseExplosion().get(j);
                 x = pos.getX();
                 y = pos.getY();
@@ -97,7 +98,8 @@ public class LabyDessin implements DessinJeu {
                 y = b.getY();
                 gc.fillOval(x * 40, y * 40, 40, 40);
                 for (int j = 0; j < laby.getLaby().monstre.get(a).getSacBombes().get(i).getCaseExplosion().size(); j++) {
-                    gc.setFill(Color.YELLOW);
+                    gc.setFill(new ImagePattern(img.getImgBouleDeFeu()));
+                    //gc.setFill(Color.YELLOW);
                     Position pos = laby.getLaby().monstre.get(a).getSacBombes().get(i).getCaseExplosion().get(j);
                     x = pos.getX();
                     y = pos.getY();
@@ -107,7 +109,8 @@ public class LabyDessin implements DessinJeu {
         }
 
         for(int i = 0;i<laby.getLaby().getTabUpgrade().get(0).getTab().size();i++) {
-            gc.setFill(Color.BLUE);
+            gc.setFill(new ImagePattern(img.getImgBombeUpgrade()));
+            // gc.setFill(Color.BLUE);
             Position uB = laby.getLaby().getTabUpgrade().get(0).getTab().get(i);
             x = uB.getX();
             y = uB.getY();
@@ -115,7 +118,8 @@ public class LabyDessin implements DessinJeu {
         }
 
         for(int i = 0;i<laby.getLaby().getTabUpgrade().get(1).getTab().size();i++) {
-            gc.setFill(Color.GREEN);
+            gc.setFill(new ImagePattern(img.getImgBouleDeFeuUpgrade()));
+            // gc.setFill(Color.GREEN);
             Position uR = laby.getLaby().getTabUpgrade().get(1).getTab().get(i);
             x = uR.getX();
             y = uR.getY();
