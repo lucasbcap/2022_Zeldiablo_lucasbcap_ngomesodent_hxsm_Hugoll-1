@@ -1,0 +1,10 @@
+11.1 Affichage avec des sprites
+
+La fenêtre n'affiche plus des figures de base (rond, ...) mais des sprites représentant
+les personnages et les objets
+
+Critères de validation
+
+- Les sprites concernent les murs, les monstres, le héros, les bombes et les items.
+- Important : ils sont chargés une fois pour toute au lancement de l'application.
+- Optionnel : le sprite change en fonction de l'orientation du personnage.
