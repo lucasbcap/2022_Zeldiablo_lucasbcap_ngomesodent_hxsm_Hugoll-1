@@ -19,32 +19,33 @@ import java.io.FileNotFoundException;
 
 public class LabyDessin implements DessinJeu {
 
-
+    static Images img;
 
     @Override
     public void dessinerJeu(Jeu jeu, Canvas canvas) {
         LabyJeu laby = (LabyJeu)jeu;
 
-        //Images img = new Images();
         //Image im = new Image("file:images/bombe.png");
 
 
         final GraphicsContext gc = canvas.getGraphicsContext2D();
 
 
-
+        if(Images.chargerDessin){
+            LabyDessin.img = new Images();
+        }
         //Image img = new Image(getClass().getResourceAsStream("murs.png"));
         for(int i =0;i<laby.getLaby().getLength();i++){
             for(int j = 0;j< laby.getLaby().getLengthY();j++){
                 if(laby.getLaby().getMur(i,j)){
                     if(laby.getLaby().getMurF(i,j)){
-                        //gc.setFill(new ImagePattern(img.imgMursFriables));
+                        gc.setFill(new ImagePattern(img.getImgMursFriables()));
                         //gc.setFill(Color.MAROON);
                         gc.fillRect(i*40, j*40, 40, 40);
                     }
                     else{
-                        //gc.setFill(new ImagePattern(img.imgMurs));
-                        //gc.setFill(Color.BLACK);
+                        gc.setFill(new ImagePattern(img.getImgMurs()));
+                        gc.setFill(Color.BLACK);
                         gc.fillRect(i*40, j*40, 40, 40);
                     }
 
@@ -55,7 +56,7 @@ public class LabyDessin implements DessinJeu {
                 }
             }
         }
-        //gc.setFill(new ImagePattern(img.imgPersoDroit));
+        gc.setFill(new ImagePattern(img.getImgPersoDroit()));
         //gc.setFill(Color.RED);
         Perso p = laby.getLaby().pj;
         double x = p.getX();
@@ -64,7 +65,7 @@ public class LabyDessin implements DessinJeu {
 
 
         for(int i = 0;i<laby.getLaby().monstre.size();i++) {
-            //gc.setFill(new ImagePattern(img.imgMonstre));
+            gc.setFill(new ImagePattern(img.getImgMonstre()));
             //gc.setFill(Color.VIOLET);
             Perso monstre = laby.getLaby().monstre.get(i);
             x = monstre.getX();
@@ -74,7 +75,7 @@ public class LabyDessin implements DessinJeu {
 
 
         for(int i = 0;i<p.getSacBombes().size();i++) {
-            //gc.setFill(new ImagePattern(img.imgBombes));
+            gc.setFill(new ImagePattern(img.getImgBombes()));
             Bombe b = p.getSacBombes().get(i);
             x = b.getX();
             y = b.getY();

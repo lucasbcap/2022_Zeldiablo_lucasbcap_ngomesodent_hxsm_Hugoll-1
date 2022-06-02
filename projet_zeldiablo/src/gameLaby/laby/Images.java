@@ -3,12 +3,13 @@ package gameLaby.laby;
 import javafx.scene.image.Image;
 
 public class Images {
-    public Image imgBombes;
-    public Image imgPersoGauche;
-    public Image imgPersoDroit;
-    public Image imgMurs;
-    public Image imgMursFriables;
-    public Image imgMonstre;
+    private Image imgBombes;
+    private Image imgPersoGauche;
+    private Image imgPersoDroit;
+    private Image imgMurs;
+    private Image imgMursFriables;
+    private Image imgMonstre;
+    public static boolean chargerDessin = true ;
 
     public Images(){
         this.imgBombes= new Image("file:images/bombe.png");
@@ -17,6 +18,34 @@ public class Images {
         this.imgMursFriables = new Image("file:images/mursF.png");
         this.imgPersoDroit = new Image("file:images/PersoDroite.png");
         this.imgPersoGauche = new Image("file:images/PersoGauche.png");
+        Images.chargerDessin = false;
+    }
 
+    public Image getImgBombes() {
+        return imgBombes;
+    }
+
+    public Image getImgPersoGauche() {
+        return imgPersoGauche;
+    }
+
+    public Image getImgPersoDroit() {
+        return imgPersoDroit;
+    }
+
+    public Image getImgMurs() {
+        return imgMurs;
+    }
+
+    public Image getImgMursFriables() {
+        return imgMursFriables;
+    }
+
+    public Image getImgMonstre() {
+        return imgMonstre;
+    }
+
+    public static boolean isChargerDessin() {
+        return chargerDessin;
     }
 }
