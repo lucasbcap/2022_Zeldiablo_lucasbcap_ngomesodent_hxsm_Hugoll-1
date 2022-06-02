@@ -17,5 +17,6 @@ public class Images {
         this.imgMursFriables = new Image("file:images/mursF.png");
         this.imgPersoDroit = new Image("file:images/PersoDroite.png");
         this.imgPersoGauche = new Image("file:images/PersoGauche.png");
+
     }
 }
