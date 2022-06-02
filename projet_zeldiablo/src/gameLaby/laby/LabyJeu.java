@@ -58,6 +58,18 @@ public class LabyJeu implements Jeu {
             }
         }
 
+        for(int a )
+        for(int i=0;i<this.laby.pj.getSacBombes().size();i++){
+            this.laby.pj.getSacBombes().get(i).setTemps( this.laby.pj.getSacBombes().get(i).getTemps()-1);
+            if(this.laby.pj.getSacBombes().get(i).getTemps()==0){
+                this.laby.pj.getSacBombes().get(i).DegatBombe(Bombe.range,laby);
+                //this.laby.pj.getSacBombes().remove(i);
+            }
+            if(this.laby.pj.getSacBombes().get(i).getTemps()<-5){
+                this.laby.pj.getSacBombes().remove(i);
+            }
+        }
+
         if(temps%3==0) {
             for (int i = 0; i < this.laby.monstre.size(); i++) {
                 this.MonstreDeplacement(this.laby.monstre.get(i));
@@ -67,6 +79,19 @@ public class LabyJeu implements Jeu {
                 }
             }
         }
+
+
+        if(laby.etreMort(laby.pj)){
+            System.out.println("Perdu");
+        }
+
+        for(int i = 0; i<laby.monstre.size();i++){
+            if(laby.etreMort(laby.monstre.get(i))){
+                laby.monstre.remove(i);
+            }
+        }
+
+
     }
 
     @Override

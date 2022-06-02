@@ -89,6 +89,23 @@ public class LabyDessin implements DessinJeu {
             }
         }
 
+        for(int a = 0;a<laby.getLaby().monstre.size();a++) {
+            for (int i = 0; i < laby.getLaby().monstre.get(a).getSacBombes().size(); i++) {
+                gc.setFill(new ImagePattern(img.getImgBombes()));
+                Bombe b = laby.getLaby().monstre.get(a).getSacBombes().get(i);
+                x = b.getX();
+                y = b.getY();
+                gc.fillOval(x * 40, y * 40, 40, 40);
+                for (int j = 0; j < laby.getLaby().monstre.get(a).getSacBombes().get(i).getCaseExplosion().size(); j++) {
+                    gc.setFill(Color.YELLOW);
+                    Position pos = laby.getLaby().monstre.get(a).getSacBombes().get(i).getCaseExplosion().get(j);
+                    x = pos.getX();
+                    y = pos.getY();
+                    gc.fillOval(x * 40, y * 40, 40, 40);
+                }
+            }
+        }
+
         for(int i = 0;i<laby.getLaby().getTabUpgrade().get(0).getTab().size();i++) {
             gc.setFill(Color.BLUE);
             Position uB = laby.getLaby().getTabUpgrade().get(0).getTab().get(i);
