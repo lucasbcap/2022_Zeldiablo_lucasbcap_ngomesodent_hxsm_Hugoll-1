@@ -19,14 +19,14 @@ public class tests {
     }
 
     /** methode test methode de la position du joueur dans le monstre */
-    /**@Test
+    @Test
     public void SurLeMonstre () throws IOException {
         Labyrinthe laby = new Labyrinthe("labySimple/laby0.txt");
-        laby.deplacerPerso(Labyrinthe.GAUCHE);
+        laby.deplacerPerso(Labyrinthe.GAUCHE,laby.pj,laby.monstre);
 
         // on le deplace sur la meme case que le monstre
-        assertEquals ( laby.m.getX() , 1 ," le monstre est en 1 ") ;
-        assertEquals ( laby.m.getY() , 1 ," le monstre est en 1 ") ;
+        assertEquals ( laby.monstre.get(0).getX() , 1 ," le monstre est en 1 ") ;
+        assertEquals ( laby.monstre.get(0).getY() , 1 ," le monstre est en 1 ") ;
         assertEquals ( laby.pj.getX() , 2 ," le joueur est en 1 ") ;
         assertEquals ( laby.pj.getY() , 1 ," le joueur est en 1 ") ;
     }
