@@ -233,6 +233,40 @@ public class Labyrinthe {
         return trouve;
     }
 
+    public boolean etreMort(Perso p){
+        ArrayList<Perso> global = this.monstre;
+        boolean retour = false;
+        int i =0;
+
+        while(i<global.size() && !retour){
+            int j=0;
+            while(j<global.get(i).getSacBombes().size() && !retour){
+                int a=0;
+                while(a<global.get(i).getSacBombes().get(j).getCaseExplosion().size() && !retour){
+                    if(p.equals(global.get(i).getSacBombes().get(j).getCaseExplosion().get(a))){
+                        retour = true;
+                    }
+                    a++;
+                }
+                j++;
+            }
+            i++;
+        }
+
+        int j =0;
+        while(j<this.pj.getSacBombes().size() && !retour) {
+            int a = 0;
+            while (a < this.pj.getSacBombes().get(j).getCaseExplosion().size() && !retour) {
+                if (p.equals(this.pj.getSacBombes().get(j).getCaseExplosion().get(a))) {
+                    retour = true;
+                }
+                a++;
+            }
+            j++;
+        }
+       return retour;
+    }
+
     /**
      * jamais fini
      *
