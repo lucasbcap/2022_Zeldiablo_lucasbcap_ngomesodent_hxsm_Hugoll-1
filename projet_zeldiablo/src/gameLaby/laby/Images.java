@@ -9,6 +9,7 @@ public class Images {
     private Image imgMurs;
     private Image imgMursFriables;
     private Image imgMonstre;
+    public static Image Perso = new Image("file:images/PersoGauche.png");
     public static boolean chargerDessin = true ;
 
     public Images(){
@@ -16,8 +17,6 @@ public class Images {
         this.imgMonstre=new Image("file:images/monstre.png");
         this.imgMurs = new Image("file:images/murs.png");
         this.imgMursFriables = new Image("file:images/mursF.png");
-        this.imgPersoDroit = new Image("file:images/PersoDroite.png");
-        this.imgPersoGauche = new Image("file:images/PersoGauche.png");
         Images.chargerDessin = false;
     }
 
