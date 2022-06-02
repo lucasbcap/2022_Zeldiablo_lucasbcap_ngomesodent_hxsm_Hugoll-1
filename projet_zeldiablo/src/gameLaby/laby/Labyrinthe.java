@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * classe labyrinthe. represente un labyrinthe avec
@@ -35,9 +36,9 @@ public class Labyrinthe {
     public Perso pj;
 
     /**
-     * attribut du Monstre
+     * attribut des Monstres
      */
-    public Perso m;
+    public ArrayList<Perso> monstre;
 
     /**
      * les murs du labyrinthe
@@ -107,7 +108,7 @@ public class Labyrinthe {
         this.murs = new boolean[nbColonnes][nbLignes];
         this.mursF = new boolean[nbColonnes][nbLignes];
         this.pj = null;
-        this.m = null;
+        this.monstre = new ArrayList<Perso>();
         this.tabUpgrade = new ArrayList<Upgrade>();
         this.tabUpgrade.add(new UpgradeBombe());
         this.tabUpgrade.add(new UpgradeRange());
@@ -136,6 +137,10 @@ public class Labyrinthe {
                     case VIDE:
                         this.murs[colonne][numeroLigne] = false;
                         this.mursF[colonne][numeroLigne] = false;
+                        Random random = new Random();
+                        if(random.nextInt(20)==4){
+                            this.monstre.add(new Perso(colonne,numeroLigne));
+                        }
                         break;
                     case PJ:
                         // pas de mur
@@ -144,13 +149,6 @@ public class Labyrinthe {
                         // ajoute PJ
                         this.pj = new Perso(colonne, numeroLigne);
                         break;
-                    case MONSTRE:
-                        // pas de mur
-                        this.murs[colonne][numeroLigne] = false;
-                        this.mursF[colonne][numeroLigne] = false;
-                        this.m = new Perso(colonne, numeroLigne);
-                        break;
-
                     default:
                         throw new Error("caractere inconnu " + c);
                 }
@@ -160,8 +158,10 @@ public class Labyrinthe {
             ligne = bfRead.readLine();
             numeroLigne++;
         }
-        if(m.equals(pj)){
-            throw new Error("Monstre et Personnage confondus");
+        for(int i = 0;i<this.monstre.size();i++) {
+            if (this.monstre.get(i).equals(pj)) {
+                throw new Error("Monstres et Personnage confondus");
+            }
         }
         // ferme fichier
         bfRead.close();
@@ -176,11 +176,9 @@ public class Labyrinthe {
      * @param p1 personnage a deplacer
      * @param p2 personnage sur lequelle ne doit pas etre p1 (si il y en a plein faire une liste)
      */
-    public void deplacerPerso(String action,Perso p1 , Perso p2) {
+    public void deplacerPerso(String action,Perso p1 , ArrayList<Perso> p2) {
         // case courante
         Position courante = new Position(p1.getX(), p1.getY());
-
-        Position p2Pos = new Position(p2.getX(), p2.getY());
 
         ArrayList<Bombe> Bombes = this.pj.getSacBombes();
         boolean bouger = true;
@@ -189,17 +187,25 @@ public class Labyrinthe {
         Position suivante = getSuivant(courante, action);
 
         // si c'est pas un mur, on effectue le deplacement
-        if (!this.murs[suivante.getX()][suivante.getY()] && !(p2Pos.equals(suivante))) {
+        if (!this.murs[suivante.getX()][suivante.getY()]) {
             for(int i = 0 ; i<Bombes.size();i++){
                 if(Bombes.get(i).equals(suivante)){
                     bouger = false;
                 }
             }
             if(bouger) {
-                // on met a jour personnage
-                p1.setX(suivante.getX());
-                p1.setY(suivante.getY());
+                for (int i = 0; i < p2.size(); i++) {
+                    if (p2.get(i).equals(suivante)) {
+                        bouger = false;
+                    }
+                }
+                if(bouger) {
+                    // on met a jour personnage
+                    p1.setX(suivante.getX());
+                    p1.setY(suivante.getY());
+                }
             }
+
         }
     }
 
@@ -210,12 +216,14 @@ public class Labyrinthe {
 
     public boolean recupererObjet(){
         boolean trouve = false;
-        int i = 0;
         int j = 0;
-        while(!trouve && j!=this.tabUpgrade.size()){
-            while(!trouve && i<this.tabUpgrade.get(i).getTab().size()){
-                if(this.pj.equals(this.tabUpgrade.get(i).getTab().get(j))){
-                    this.tabUpgrade.get(i).activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
+        while(!trouve && j!=2){
+            int i = 0;
+            while(!trouve && i<this.tabUpgrade.get(j).getTab().size()){
+                // La boucle pour avoir tout les element d un tableau de position donc upgradeBombe ou range
+                if(this.pj.equals(this.tabUpgrade.get(j).getTab().get(i))){
+                    // si le personnage est sur une upgrade alors il l active
+                    this.tabUpgrade.get(j).activerUpgrade(new Position(this.pj.getX(),this.pj.getY()));
                     trouve = true;
                 }
                 i++;
