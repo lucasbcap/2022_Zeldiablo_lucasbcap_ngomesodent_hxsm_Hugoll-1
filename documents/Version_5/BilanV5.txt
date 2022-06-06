@@ -1,0 +1,18 @@
+Bilan de la version 5
+
+Répartition des tâches :
+Lucas :  Diagramme de séquence / class de Monstre Incendiaire et degat sur les monstres en binôme avec Hugolin, Gestion GitHub, Ecriture du code de Monstre incendiaire et detetction des degats monstre, correction de bug, création des updates et des fichiers txt,
+Hugolin : Diagramme de séquence de Monstre Incendiaire et degat sur les monstres en binôme avec Lucas, Aide au code de Monstre incendiaire, Correction de bugs, gestion des anciens tests
+Romain : Diagramme Séquence en binôme avec Noam, ecriture du programme pour ajouter les images
+Noam : Diagramme Séquence des ajout et gestion d'image dans le programme, gestion des anciens tests
+
+Avancement des tâches
+
+- Monstre incendiaire fonctionne comme prévu et les tests fonctionnent
+- les Images fonctionnent comme prévu
+- la detection des degats sur les monstres fonctionnent comme prévu
+
+
+
+Difficultés rencontrées
+- Certaine commandes commençais à étre trés longue

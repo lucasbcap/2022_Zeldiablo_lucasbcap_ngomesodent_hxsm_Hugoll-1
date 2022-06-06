@@ -1,0 +1,43 @@
+◦ Liste des fonctionnalités réalisées :
+
+- Monstre qui se deplace aléatoirement (Version 2)
+- DepotBombe() sert à poser une bombe avec espace sur le joueur et la fait exploser (ici disparaitre ) au bout d un certain temps (Version 3)
+- DegatBombe() sert à creer une explosion quand la bombe disparait donc se crée des ranger d'explosion et les affiches (Version 3)
+- MursFriable() sert à casser un type de mus définit quand il y a une explosion, cela lache aléatoirement une upgrade(Version 4)
+- Les upgrades sert à quand on appuis sur E on les rammasses puis cela augmente les statistiques de la bombe ( range d'explosion et nombre de bombe dispo ) (Version 4)
+- Ajout d'images (Version 5)
+- Gestion des dégat de la bombe et ajout de monstre incendiaire, des monstres qui peuvent poser des bombes aléatoirement (Version 5)
+
+
+◦ Répartition du travail entre étudiants
+
+
+- Lucas : Diagramme de class, Diagramme de sequence de DepotBombe(), MursFriable(), Gestion des dégat de la bombe et ajout de monstre incendiaire avec Hugolin, gestion du git, quelques bilans, 
+programmation de DepotBombe(), MursFriable(), Gestion des dégat de la bombe et ajout de monstre incendiaire, Monstre qui se deplace aléatoirement avec Hugolin, aide sur la programmation et diagramme de sequence en général
+
+- Hugolin : Diagramme de sequence de DepotBombe(), MursFriable(), Gestion des dégat de la bombe et ajout de monstre incendiaire avec Lucas, programmation de DepotBombe(), MursFriable(), 
+Gestion des dégat de la bombe et ajout de monstre incendiaire, Monstre qui se deplace aléatoirement avec Lucas, création de tests et ecriture des bilans
+
+- Noam : Diagramme de sequence de DegatBombe(), upgrades , Ajout d'images avec Romain , programmation de DegatBombe(), upgrades , Ajout d'images avec Romain, ecritures de bilans
+
+- Romain : Diagramme de sequence de DegatBombe(), upgrades , Ajout d'images avec Noam , programmation de DegatBombe(), upgrades , Ajout d'images avec Noam
+
+
+◦ Présentation d’un élément orignal dont vous êtes fiers :
+
+- Lucas : Je suis fiers d'avoir fais MursFriable(), au début on pourrait penser que cela est dur mais au final on a réussi à approcher le probleme avec une conception simple,
+les murs se détruisent bien comme il faut, nous avons eu des problèmes sur cette fonction mais aprés un grand temps de reflection cela à été corrigé. Le résultat final
+est exactement se que nous voulions et donc je suis fier d'avoir fais quelque chose qui fonctionne bien.
+
+- Hugolin : L'itération que j'ai préféré est depotBombe. Ce n'est pas à cause de sa difficulté mais plutôt parce que c'est cette partie qui à posée les bases de notre
+projet. Il a fallu créer la classe bombe de telle sorte que l'on puisse l'améliorer. Il a fallu également créer une classe position pour
+puvoir gérer la bombe en  même temps que le personnage et les monstres. 
+
+
+- Romain : De mon côté l’itération que j’ai préféré, c’est l’ajout des sprites. Il fallait que je trouve ou crée des images pour les ajouter dans notre jeu.
+ J’ai vraiment beaucoup apprécié cette itération car je trouve que cela rajoute un gros plus au jeu. Tout simplement parce que lorsqu’on joue à un jeu,
+ on préfère avec des images pour mieux comprendre le fonctionnement du jeu (c’est plus représentatif)
+
+- Noam : Ce que j'ai préféré faire pendant la SAE a été de coder la fonction recupererObjet, car elle permettait
+d'ajouter un autre aspect au jeu, mais aussi car nous avons rédéfini la fonctionnalité à notre manière,
+ce qui rend notre projet unique en quelque sorte
