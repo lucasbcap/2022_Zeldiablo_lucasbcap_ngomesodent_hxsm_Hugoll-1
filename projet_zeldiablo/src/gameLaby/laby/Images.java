@@ -2,7 +2,17 @@ package gameLaby.laby;
 
 import javafx.scene.image.Image;
 
+/**
+ * Gestion des images
+ */
+
+
 public class Images {
+
+    /**
+     * Variables
+     */
+
     private Image imgBombes;
     private Image imgPersoGauche;
     private Image imgPersoDroit;
@@ -13,8 +23,14 @@ public class Images {
     private Image imgBouleDeFeuUpgrade;
     private Image imgBombeUpgrade;
     public static Image Perso = new Image("file:images/PersoGauche.png");
+
+    // Variable pour charger une fois les images
     public static boolean chargerDessin = true ;
 
+
+    /**
+     * Creation de toutes les images
+     */
     public Images(){
         this.imgBombes= new Image("file:images/bombe.png");
         this.imgMonstre=new Image("file:images/monstre.png");
@@ -27,6 +43,11 @@ public class Images {
         this.imgBouleDeFeuUpgrade = new Image("file:images/BouleDeFeuUpgrade.png");
         Images.chargerDessin = false;
     }
+
+
+    // ############################################
+    // GETTER
+    // ############################################
 
     public Image getImgBouleDeFeuUpgrade() {
         return imgBouleDeFeuUpgrade;
@@ -64,7 +85,4 @@ public class Images {
         return imgMonstre;
     }
 
-    public static boolean isChargerDessin() {
-        return chargerDessin;
-    }
 }

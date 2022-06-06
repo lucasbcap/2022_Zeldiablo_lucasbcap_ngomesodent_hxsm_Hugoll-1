@@ -5,15 +5,26 @@ import java.util.ArrayList;
 public class UpgradeRange implements Upgrade{
     private ArrayList<Position> tab;
 
+    /**
+     * Cree le tableau d upgrade
+     */
     public UpgradeRange (){
         this.tab = new ArrayList<Position>();
     }
 
+    /**
+     * permet d ajouter une upgrade au tableau courant
+     * @param p postion de l upgrade
+     */
     @Override
     public void ajouterUpgrade(Position p) {
         this.tab.add(p);
     }
 
+    /**
+     * permet d activer une upgrade ici augmente de la range
+     * @param p postion de l upgrade
+     */
     @Override
     public void activerUpgrade(Position p) {
         Bombe.range ++;
@@ -28,6 +39,10 @@ public class UpgradeRange implements Upgrade{
         }
     }
 
+    /**
+     * retourne le tableau d upgrade
+     * @return
+     */
     @Override
     public ArrayList<Position> getTab() {
         return this.tab;

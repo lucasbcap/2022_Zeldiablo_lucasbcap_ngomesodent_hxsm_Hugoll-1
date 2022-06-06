@@ -5,16 +5,29 @@ import java.util.Random;
 
 public class Bombe extends Position {
 
+    /**
+     * Variables
+     */
     private int temps = 15;
     private ArrayList<Position> caseExplosion;
 
     public static int range = 1;
 
+    /**
+     * Constructeur de la bombe
+     * @param x position x de la bombe
+     * @param y position y de la bombe
+     */
     public Bombe(int x,int y){
         super(x,y);
         this.caseExplosion = new ArrayList<>();
     }
 
+    /**
+     * La bombe explose en forme de croix  et cree une explosion qui s arrete contre un mur et casse les murs friables
+     * @param range longueur d'explosion de la bombe
+     * @param laby l'endroit où elle explose
+     */
     public void DegatBombe(int range,Labyrinthe laby){
 
         for(int i = 0; i<4 ; i++){
@@ -81,6 +94,9 @@ public class Bombe extends Position {
         return this.temps;
     }
 
+    /**
+     * @return les cases où il y a des explosions
+     */
     public ArrayList<Position> getCaseExplosion() {
         return caseExplosion;
     }

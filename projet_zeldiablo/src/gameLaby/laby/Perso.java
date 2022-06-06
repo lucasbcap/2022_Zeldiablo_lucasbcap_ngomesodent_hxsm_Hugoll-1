@@ -38,6 +38,11 @@ public class Perso extends Position{
         return (this.getX() == dx && this.getY() == dy);
     }
 
+    /**
+     * Pose une bombe sur le joueur
+     * @param x coord x dans la bombe a poser
+     * @param y coord y dans la bombe a poser
+     */
     public void DepotBombe(int x , int y){
         if(this.SacBombes.size()<nbBombe) {
             Bombe b = new Bombe(x, y);

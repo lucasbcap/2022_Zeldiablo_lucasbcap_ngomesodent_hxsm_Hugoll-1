@@ -8,7 +8,11 @@ import java.io.IOException;
 
 public class MainLaby {
 
-
+    /**
+     *
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
         int width = 900;
         int height = 700;

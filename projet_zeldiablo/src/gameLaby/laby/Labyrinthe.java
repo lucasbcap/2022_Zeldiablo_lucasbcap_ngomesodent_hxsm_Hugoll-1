@@ -60,6 +60,12 @@ public class Labyrinthe {
 
     private ArrayList<Upgrade> tabUpgrade;
 
+    /**
+     *  Permet d avoir les coordonnees de la prochaine action du joueur
+     * @param pos la position du perso
+     * @param action la direction voulut
+     * @return la position apres action
+     */
     static Position getSuivant(Position pos, String action) {
         int x = pos.getX();
         int y = pos.getY();
@@ -174,7 +180,7 @@ public class Labyrinthe {
      *
      * @param action une des actions possibles
      * @param p1 personnage a deplacer
-     * @param p2 personnage sur lequelle ne doit pas etre p1 (si il y en a plein faire une liste)
+     * @param p2 personnages sur le quelles ne doit pas etre p1
      */
     public void deplacerPerso(String action,Perso p1 , ArrayList<Perso> p2) {
         // case courante
@@ -209,11 +215,20 @@ public class Labyrinthe {
         }
     }
 
+    /**
+     * Permet de supprimer un mur a la postion x et y
+     * @param x la coord x du mur
+     * @param y la coord y du mur
+     */
     public void casserMurF(int x,int y){
         this.murs[x][y]=false;
         this.mursF[x][y]=false;
     }
 
+    /**
+     *  Permet d activer une upgrade si on est dessus
+     * @return true si il y a une upgrade sinon false
+     */
     public boolean recupererObjet(){
         boolean trouve = false;
         int j = 0;
@@ -233,11 +248,16 @@ public class Labyrinthe {
         return trouve;
     }
 
+    /**
+     * Detecte si le perso se trouve dans l'explosion d une bombe
+     * @param p le perso
+     * @return true si il est mort sinon false
+     */
     public boolean etreMort(Perso p){
         ArrayList<Perso> global = this.monstre;
         boolean retour = false;
         int i =0;
-
+        // on cherche dans les explosions de toutes les bombes de tout les monstres
         while(i<global.size() && !retour){
             int j=0;
             while(j<global.get(i).getSacBombes().size() && !retour){
@@ -254,6 +274,7 @@ public class Labyrinthe {
         }
 
         int j =0;
+        // on cherche dans les explosions de toutes les bombes de perso
         while(j<this.pj.getSacBombes().size() && !retour) {
             int a = 0;
             while (a < this.pj.getSacBombes().get(j).getCaseExplosion().size() && !retour) {
